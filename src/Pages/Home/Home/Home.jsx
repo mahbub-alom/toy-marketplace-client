@@ -1,14 +1,14 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import useTitle from '../../../hooks/useTitle';
+import React from "react";
+import useTitle from "../../../hooks/useTitle";
 
 const Home = () => {
-    useTitle('Home')
-    return (
-        <div>
-            <h2>this is home</h2>
-        </div>
-    );
+  useTitle("Home");
+  return (
+    <div>
+      <h2>this is home</h2>
+    </div>
+  );
 };
 
 export default Home;
