@@ -8,45 +8,52 @@ import Login from "../Pages/Home/Login/Login";
 import Registration from "../Pages/Home/Registration/Registration";
 import AddToys from "../Pages/AddToys/AddToys";
 import AllToys from "../Pages/AllToys/AllToys";
+import MyToys from "../Pages/MyToys/MyToys";
+import PrivateRoute from "./PrivateRoute";
+
 
 /* eslint-disable no-unused-vars */
 const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Main></Main>,
-      errorElement:<ErrorPage></ErrorPage>,
-      children:[
-        {
-            path:'/',
-            element:<Home></Home>
-        },
-        {
-          path:'blog',
-          element:<Blog></Blog>
-        },
-        {
-          path:'loader',
-          element:<LoadingSpinner></LoadingSpinner>
-        },
-        {
-          path:'login',
-          element:<Login></Login>
-        },
-        {
-          path:'registration',
-          element:<Registration></Registration>
-        },
-        {
-          path:'addtoys',
-          element:<AddToys></AddToys>
-        },
-        {
-          path:'alltoys',
-          element:<AllToys></AllToys>,
-          loader:()=>fetch('http://localhost:5000/addtoys')
-        }
-      ]
-    },
-  ]);
+  {
+    path: "/",
+    element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "blog",
+        element: <Blog></Blog>,
+      },
+      {
+        path: "loader",
+        element: <LoadingSpinner></LoadingSpinner>,
+      },
+      {
+        path: "login",
+        element: <Login></Login>,
+      },
+      {
+        path: "registration",
+        element: <Registration></Registration>,
+      },
+      {
+        path: "addtoys",
+        element: <AddToys></AddToys>,
+      },
+      {
+        path: "alltoys",
+        element: <AllToys></AllToys>,
+        loader: () => fetch("http://localhost:5000/addtoys"),
+      },
+      {
+        path: "mytoys",
+        element: <PrivateRoute><MyToys></MyToys></PrivateRoute>,
+      },
+    ],
+  },
+]);
 
 export default router;
