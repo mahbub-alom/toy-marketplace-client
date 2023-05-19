@@ -23,11 +23,8 @@ const Gallary = () => {
             />
           </figure>
           <div className="card-body">
-            <h2 className="card-title">Life hack</h2>
-            <p>How to park your car at your garage?</p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Learn now!</button>
-            </div>
+            <h2 className="card-title">American girl doll</h2>
+            <p>American Girl dolls are popular play dolls known for their high-quality craftsmanship</p>
           </div>
         </div>
         <div className="card w-96 glass">
@@ -39,11 +36,8 @@ const Gallary = () => {
             />
           </figure>
           <div className="card-body">
-            <h2 className="card-title">Life hack</h2>
-            <p>How to park your car at your garage?</p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Learn now!</button>
-            </div>
+            <h2 className="card-title">Couple doll</h2>
+            <p>Couple dolls are designed to represent a romantic partnership or relationship.</p>
           </div>
         </div>
         <div className="card w-96 glass">
@@ -55,11 +49,8 @@ const Gallary = () => {
             />
           </figure>
           <div className="card-body">
-            <h2 className="card-title"> hack</h2>
-            <p>How to park your car at your garage?</p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Learn now!</button>
-            </div>
+            <h2 className="card-title">Interactive baby doll</h2>
+            <p>Interactive baby dolls are designed to simulate the experience of caring for a real baby.</p>
           </div>
         </div>
         <div className="card w-96 glass">
@@ -71,11 +62,8 @@ const Gallary = () => {
             />
           </figure>
           <div className="card-body">
-            <h2 className="card-title">Life hack</h2>
-            <p>How to park your car at your garage?</p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Learn now!</button>
-            </div>
+            <h2 className="card-title">Play doll</h2>
+            <p> Play dolls are designed for interactive and imaginative play. </p>
           </div>
         </div>
         <div className="card w-96 glass">
@@ -87,11 +75,9 @@ const Gallary = () => {
             />
           </figure>
           <div className="card-body">
-            <h2 className="card-title">Life hack</h2>
-            <p>How to park your car at your garage?</p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Learn now!</button>
-            </div>
+            <h2 className="card-title">Fashion doll</h2>
+            <p>Beautiful picture with a doll in a pink dress standing in the middle of the road in the botanical garden</p>
+
           </div>
         </div>
         <div className="card w-96 glass">
@@ -103,11 +89,9 @@ const Gallary = () => {
             />
           </figure>
           <div className="card-body">
-            <h2 className="card-title">Life hack</h2>
-            <p>How to park your car at your garage?</p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Learn now!</button>
-            </div>
+            <h2 className="card-title">Rag doll</h2>
+            <p>Raggedy Ann dolls are classic rag dolls known for their simple and charming design. </p>
+  
           </div>
         </div>
       </div>
