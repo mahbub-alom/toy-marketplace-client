@@ -7,6 +7,7 @@ import LoadingSpinner from "../Pages/Shared/LoadingSpinner/LoadingSpinner";
 import Login from "../Pages/Home/Login/Login";
 import Registration from "../Pages/Home/Registration/Registration";
 import AddToys from "../Pages/AddToys/AddToys";
+import AllToys from "../Pages/AllToys/AllToys";
 
 /* eslint-disable no-unused-vars */
 const router = createBrowserRouter([
@@ -38,6 +39,11 @@ const router = createBrowserRouter([
         {
           path:'addtoys',
           element:<AddToys></AddToys>
+        },
+        {
+          path:'alltoys',
+          element:<AllToys></AllToys>,
+          loader:()=>fetch('http://localhost:5000/addtoys')
         }
       ]
     },

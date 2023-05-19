@@ -1,7 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
+import useTitle from "../../hooks/useTitle";
+import Swal from "sweetalert2";
 
 const AddToys = () => {
+    useTitle('Add Toys')
   const handleAddToy = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -14,17 +17,41 @@ const AddToys = () => {
     const rating = form.rating.value;
     const quantity = form.quantity.value;
     const description = form.description.value;
-    console.log(
-      photo,
-      toyName,
-      sellerName,
-      sellerEmail,
-      subcategory,
-      price,
-      quantity,
-      description,
-      rating
-    );
+    const toyDetails={
+        photo,
+        toyName,
+        sellerName,
+        sellerEmail,
+        subcategory,
+        price,
+        rating,
+        quantity,
+        description
+    }
+
+
+    fetch('http://localhost:5000/addtoys',{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(toyDetails)
+  
+    })
+    .then(response => response.json())
+    .then(data=>{
+        console.log(data)
+        if(data.insertedId){
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Your Toys has been added successfully',
+                showConfirmButton: false,
+                timer: 1500
+              })
+        }
+        form.reset();
+    })
   };
 
   return (
@@ -59,39 +86,6 @@ const AddToys = () => {
                     name="toyname"
                   />
                 </div>
-                <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Seller Name</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Seller Name"
-                  className="input input-bordered"
-                  name="sellername"
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Seller Name</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Seller Name"
-                  className="input input-bordered"
-                  name="sellername"
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Seller Name</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Seller Name"
-                  className="input input-bordered"
-                  name="sellername"
-                />
-              </div>
               
               <div className="form-control">
                 <label className="label">
@@ -114,6 +108,7 @@ const AddToys = () => {
                   placeholder="Seller Email"
                   className="input input-bordered"
                   name="selleremail"
+                  required
                 />
               </div>
               <div className="form-control">
