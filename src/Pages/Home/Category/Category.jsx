@@ -5,6 +5,7 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 const Category = () => {
   return (
     <Tabs>
+      <h2 className="text-4xl text-center text-pink-300 mb-4">Toy All Category</h2>
       <TabList className="flex justify-center">
         <Tab>
           <button className="btn btn-active btn-primary me-3">
