@@ -8,7 +8,7 @@ const Login = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  const { signIn } = useContext(AuthContext);
+  const { signIn,googleLogin } = useContext(AuthContext);
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -30,6 +30,17 @@ const Login = () => {
       })
 
   };
+
+  const signInGoogle=()=>{
+    googleLogin()
+    .then(result=>{
+      const loggedUser = result.user;
+      console.log(loggedUser);
+    })
+    .catch(error=>{
+      console.log(error.message);
+    })
+  }
 
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -83,8 +94,7 @@ const Login = () => {
             <div className="divider">OR</div>
 
             <div>
-              <button className="btn btn-primary">
-                {" "}
+              <button onClick={signInGoogle} className="btn btn-primary">
                 <FaGoogle className="me-2" />
                 Login with google
               </button>
