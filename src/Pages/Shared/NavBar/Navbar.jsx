@@ -1,28 +1,53 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../../public/logo/navlogo.svg";
+import { AuthContext } from "../../../Providers/AuthProviders";
+import Swal from 'sweetalert2'
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut=()=>{
+    logOut(
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Logout Successfully',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    )
+    .then()
+    .catch(error=>{
+      console.log(error.message);
+    })
+  }
+
   const navItem = (
     <>
       <li>
-        <Link to='/'>Home</Link>
+        <Link to="/">Home</Link>
       </li>
       <li>
-        <Link>All Toys</Link>
+        <Link to="/">All Toys</Link>
       </li>
+      {user && (
+        <>
+          <li>
+            <Link to="/">Add a Toys</Link>
+          </li>
+          <li>
+            <Link to="/">My Toys</Link>
+          </li>
+          <li>
+            <Link onClick={handleLogOut}>LogOut</Link>
+          </li>
+        </>
+      )}
+
       <li>
-        <Link>Add a Toys</Link>
-      </li>
-      <li>
-        <Link to='/blog'>Blog</Link>
-      </li>
-      <li>
-        <Link to='/login'>Login</Link>
-      </li>
-      <li>
-        <Link to='/logout'>LogOut</Link>
+        <Link to="/blog">Blog</Link>
       </li>
     </>
   );
@@ -65,11 +90,17 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navItem}</ul>
       </div>
       <div className="navbar-end">
-        <div className="avatar">
-          <div className="w-12 me-4 mt-4 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+        {user ? (
+          <div className="avatar">
+            <div className="w-12 me-4 mt-4 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+              <img title={user.displayName} src={user.photoURL} />
+            </div>
           </div>
-        </div>
+        ) : (
+          <button className="btn btn-active btn-secondary">
+            <Link to="/login">Login</Link>
+          </button>
+        )}
       </div>
     </div>
   );
