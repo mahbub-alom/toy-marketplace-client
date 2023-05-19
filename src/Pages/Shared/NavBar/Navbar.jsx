@@ -92,7 +92,7 @@ const Navbar = () => {
       <div className="navbar-end">
         {user ? (
           <div className="avatar">
-            <div className="w-12 me-4 mt-4 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+            <div className="w-12 me-4 mt-4 rounded-full ring ring-primary">
               <img title={user.displayName} src={user.photoURL} />
             </div>
           </div>
