@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import Swal from "sweetalert2";
+import useTitle from "../../../hooks/useTitle";
 
 const Login = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-
   const { signIn,googleLogin } = useContext(AuthContext);
+  useTitle('Login');
 
   const handleLogin = (event) => {
     event.preventDefault();

@@ -2,9 +2,11 @@
 import React from "react";
 import { useRouteError, Link } from "react-router-dom";
 import errorphoto from "../../../../public/logo/error.jpg";
+import useTitle from "../../../hooks/useTitle";
 
 const ErrorPage = () => {
   const { error, status } = useRouteError();
+  useTitle('Error')
   console.log(error.message);
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100">

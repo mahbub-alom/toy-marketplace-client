@@ -4,12 +4,13 @@ import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import { updateProfile } from "firebase/auth";
+import useTitle from "../../../hooks/useTitle";
 
 const Registration = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-
   const { createUser,logOut } = useContext(AuthContext);
+  useTitle('Register');
 
   const handleSignUp = (event) => {
     setSuccess('')
