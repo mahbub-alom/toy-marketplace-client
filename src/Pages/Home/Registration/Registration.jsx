@@ -3,12 +3,13 @@ import React, { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
+import { updateProfile } from "firebase/auth";
 
 const Registration = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  const { createUser } = useContext(AuthContext);
+  const { createUser,logOut } = useContext(AuthContext);
 
   const handleSignUp = (event) => {
     setSuccess('')
@@ -24,7 +25,11 @@ const Registration = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        setSuccess('user has been created successfully')
+        updateProfile(loggedUser, {
+          displayName: name, photoURL: photo
+      })
+        setSuccess('user has been created successfully');
+      logOut();
         form.reset();
         setError('')
       })
