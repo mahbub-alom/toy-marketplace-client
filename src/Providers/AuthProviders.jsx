@@ -24,7 +24,7 @@ const signIn =(email,password)=>{
     return signInWithEmailAndPassword(auth,email,password);
 }
 
-const googleLogin =(email,password)=>{
+const googleLogin =()=>{
     setLoading(true)
     return signInWithPopup(auth,googleProvider);
 }

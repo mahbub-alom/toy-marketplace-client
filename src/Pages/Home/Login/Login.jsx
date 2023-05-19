@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../../Providers/AuthProviders";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [error, setError] = useState("");
@@ -36,6 +37,13 @@ const Login = () => {
     .then(result=>{
       const loggedUser = result.user;
       console.log(loggedUser);
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Google login Successfully',
+        showConfirmButton: false,
+        timer: 1500
+      })
     })
     .catch(error=>{
       console.log(error.message);
