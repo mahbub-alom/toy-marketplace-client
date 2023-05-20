@@ -8,12 +8,12 @@ const AddToys = () => {
 
   const bookCategories = ["Barbie Doll", "American Doll", "Baby Doll"];
 
-  const [selectedBookCategory, setSelectedBookCategory] = useState(
+  const [selectedToyCategory, setSelectedToyCategory] = useState(
     bookCategories[0]
   );
 
   const handleChangeSelectedValue = (event) => {
-    setSelectedBookCategory(event.target.value);
+    setSelectedToyCategory(event.target.value);
   };
 
   const handleAddToy = (event) => {
@@ -39,7 +39,6 @@ const AddToys = () => {
       quantity,
       description,
     };
-    console.log(toyDetails);
 
     fetch("http://localhost:5000/addtoys", {
       method: "POST",
@@ -129,7 +128,7 @@ const AddToys = () => {
                     id="inputState"
                     name="categoryName"
                     className="form-select p-3 rounded-lg "
-                    value={selectedBookCategory}
+                    value={selectedToyCategory}
                     onChange={handleChangeSelectedValue}
                   >
                     {bookCategories.map((option) => (

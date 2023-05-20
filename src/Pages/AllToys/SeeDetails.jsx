@@ -7,16 +7,19 @@ const SeeDetails = () => {
 
   return (
     <div className="flex justify-center">
-      <div className="card border mt-4 mb-4 card-compact w-2/3 bg-base-100 shadow-xl">
-        <figure>
-          <img
-            src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-            alt="Shoes"
-          />
+      <div className="card border mt-4 mb-4 card-compact bg-base-100 shadow-xl">
+        <figure >
+        <img style={{height:"256px"}}
+            className="img-responsive w-full"
+              src={toy.photo}
+              alt="Girl doll!"
+            />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{toy.sellerEmail}</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <h2 className="card-title">{toy.toyName}</h2>
+          <h2>Seller Name : {toy.sellerName}</h2>
+          <h2>Seller Email : {toy.sellerEmail}</h2>
+          <p>${toy.price}</p>
         </div>
       </div>
     </div>

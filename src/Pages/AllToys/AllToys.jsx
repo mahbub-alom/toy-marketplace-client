@@ -40,7 +40,7 @@ const AllToys = () => {
               <td>{toy.subcategory}</td>
               <td>{toy.price}</td>
               <td>{toy.quantity}</td>
-              <Link className="btn btn-secondary" to={`/seeDetails/${toy._id}`}>view details</Link>
+              <Link className="btn btn-secondary mb-2" to={`/seeDetails/${toy._id}`}>view details</Link>
             </tr>
           ))}
         </tbody>

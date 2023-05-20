@@ -1,11 +1,21 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 
 const Category = () => {
+  const [allCategory, setAllCategory] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/addtoys")
+      .then((res) => res.json())
+      .then((data) => setAllCategory(data));
+  }, []);
+
   return (
     <Tabs>
-      <h2 className="text-4xl text-center text-pink-300 mb-4">Toy All Category</h2>
+      <h2 className="text-4xl text-center text-pink-300 mb-4">
+        Toy All Category
+      </h2>
       <TabList className="flex justify-center">
         <Tab>
           <button className="btn btn-active btn-primary me-3">
@@ -23,60 +33,116 @@ const Category = () => {
       </TabList>
 
       <TabPanel>
-        <div className="grid grid-cols-1 md:grid-cols-3 mx-auto mt-5 mb-5 gap-4">
-          <div className="card w-96 bg-base-100 shadow-xl border">
-            <figure>
-              <img
-                src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                alt="Shoes"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">Shoes!</h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
-              </div>
-            </div>
-          </div>
-          <div className="card w-96 bg-base-100 shadow-xl border">
-            <figure>
-              <img
-                src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                alt="Shoes"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">Shoes!</h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
-              </div>
-            </div>
-          </div>
-          <div className="card w-96 bg-base-100 shadow-xl border">
-            <figure>
-              <img
-                src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                alt="Shoes"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">Shoes!</h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
-              </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 mx-auto mt-5 mb-5 gap-4">
+      {
+        allCategory.filter(category => category.categoryName === "Barbie Doll").map(item=> 
+          <div key={item._id} className="card w-96 bg-base-100 shadow-xl border">
+          <figure>
+            <img src={item.photo} alt="baby dolls" />
+          </figure>
+          <div className="card-body">
+            <h2 className="card-title">{item.categoryName}</h2>
+            <p>{item.price}</p>
+            <p>{item.rating}</p>
+            <div className="card-actions justify-end">
+              <button className="btn btn-primary">View details</button>
             </div>
           </div>
         </div>
+        )
+      }
+      </div>
+    
       </TabPanel>
       <TabPanel>
-        <h2>baby doll</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 mx-auto mt-5 mb-5 gap-4">
+      {
+        allCategory.filter(category => category.categoryName === "Baby Doll").map(item=> 
+          <div key={item._id} className="card w-96 bg-base-100 shadow-xl border">
+          <figure>
+            <img src={item.photo} alt="baby dolls" />
+          </figure>
+          <div className="card-body">
+            <h2 className="card-title">{item.categoryName}</h2>
+            <p>{item.price}</p>
+            <p>{item.rating}</p>
+            <div className="card-actions justify-end">
+              <button className="btn btn-primary">View details</button>
+            </div>
+          </div>
+        </div>
+        )
+      }
+      </div>
       </TabPanel>
       <TabPanel>
-        <h2>american doll</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 mx-auto mt-5 mb-5 gap-4">
+      {
+        allCategory.filter(category => category.categoryName === "American Doll").map(item=> 
+          <div key={item._id} className="card w-96 bg-base-100 shadow-xl border">
+          <figure>
+            <img src={item.photo} alt="baby dolls" />
+          </figure>
+          <div className="card-body">
+            <h2 className="card-title">{item.categoryName}</h2>
+            <p>{item.price}</p>
+            <p>{item.rating}</p>
+            <div className="card-actions justify-end">
+              <button className="btn btn-primary">View details</button>
+            </div>
+          </div>
+        </div>
+        )
+      }
+      </div>
       </TabPanel>
+      {/* <TabPanel>
+        <div>baby doll</div>
+        <div className="grid grid-cols-1 md:grid-cols-3 mx-auto mt-5 mb-5 gap-4">
+          {allCategory
+            .filter((s) => s.categoryName === "baby dolls")
+            .map((item) => (
+              <>
+                <div className="card w-96 bg-base-100 shadow-xl border">
+                  <figure>
+                    <img src={item.photo} alt="baby dolls" />
+                  </figure>
+                  <div className="card-body">
+                    <h2 className="card-title">{item.categoryName}</h2>
+                    <p>{item.price}</p>
+                    <p>{item.rating}</p>
+                    <div className="card-actions justify-end">
+                      <button className="btn btn-primary">View details</button>
+                    </div>
+                  </div>
+                </div>
+              </>
+            ))}
+        </div>
+      </TabPanel> */}
+      {/* <TabPanel>
+        <div className="grid grid-cols-1 md:grid-cols-3 mx-auto mt-5 mb-5 gap-4">
+          {allCategory
+            .filter((s) => s.categoryName === "American Doll")
+            .map((item) => (
+            
+                <div key={item._id} className="card w-96 bg-base-100 shadow-xl border">
+                  <figure>
+                    <img src={item.photo} alt="American dolls" />
+                  </figure>
+                  <div className="card-body">
+                    <h2 className="card-title">{item.categoryName}</h2>
+                    <p>{item.price}</p>
+                    <p>{item.rating}</p>
+                    <div className="card-actions justify-end">
+                      <button className="btn btn-primary">View details</button>
+                    </div>
+                  </div>
+                </div>
+           
+            ))}
+        </div>
+      </TabPanel> */}
     </Tabs>
   );
 };

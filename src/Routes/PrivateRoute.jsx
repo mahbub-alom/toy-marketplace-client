@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 import { AuthContext } from '../Providers/AuthProviders';
 import { Navigate, useLocation } from 'react-router-dom';
 
@@ -19,8 +18,5 @@ if(user){
 return <Navigate to="/login" state={{from: location}} replace></Navigate>
 };
 
-PrivateRoute.propTypes = {
-    children: PropTypes.string.isRequired, // Define the prop validation for 'toy'
-  };
 
 export default PrivateRoute;
