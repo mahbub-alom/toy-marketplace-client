@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import Swal from "sweetalert2";
@@ -11,6 +11,10 @@ const Login = () => {
   const [success, setSuccess] = useState("");
   const { signIn,googleLogin } = useContext(AuthContext);
   useTitle('Login');
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/'
+  
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -25,6 +29,7 @@ const Login = () => {
         setSuccess('user logged successfully');
         setError('');
         form.reset();
+        navigate(from, {replace:true})
       })
     .catch(error=>{
         console.log(email.message);
@@ -46,6 +51,7 @@ const Login = () => {
         timer: 1500
       })
     })
+    navigate(from, {replace:true})
     .catch(error=>{
       console.log(error.message);
     })

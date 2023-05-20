@@ -10,6 +10,7 @@ import AddToys from "../Pages/AddToys/AddToys";
 import AllToys from "../Pages/AllToys/AllToys";
 import MyToys from "../Pages/MyToys/MyToys";
 import PrivateRoute from "./PrivateRoute";
+import SeeDetails from "../Pages/AllToys/SeeDetails";
 
 
 /* eslint-disable no-unused-vars */
@@ -45,12 +46,17 @@ const router = createBrowserRouter([
       },
       {
         path: "alltoys",
-        element: <AllToys></AllToys>,
+        element:<AllToys></AllToys>,
       },
       {
         path: "mytoys",
         element: <PrivateRoute><MyToys></MyToys></PrivateRoute>,
       },
+      {
+        path:'seeDetails/:id',
+        element:<PrivateRoute><SeeDetails></SeeDetails></PrivateRoute>,
+        loader:({params})=> fetch (`http://localhost:5000/addtoys/${params.id}`)
+      }
     ],
   },
 ]);

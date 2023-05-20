@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import useTitle from "../../hooks/useTitle";
+import { Link } from "react-router-dom";
 
 const AllToys = () => {
   useTitle("All Toys");
@@ -39,7 +40,7 @@ const AllToys = () => {
               <td>{toy.subcategory}</td>
               <td>{toy.price}</td>
               <td>{toy.quantity}</td>
-              <td>view details</td>
+              <Link className="btn btn-secondary" to={`/seeDetails/${toy._id}`}>view details</Link>
             </tr>
           ))}
         </tbody>
