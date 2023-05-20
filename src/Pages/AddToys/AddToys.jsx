@@ -1,10 +1,21 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState } from "react";
 import useTitle from "../../hooks/useTitle";
 import Swal from "sweetalert2";
 
 const AddToys = () => {
-    useTitle('Add Toys')
+  useTitle("Add Toys");
+
+  const bookCategories = ["Barbie Doll", "American Doll", "Baby Doll"];
+
+  const [selectedBookCategory, setSelectedBookCategory] = useState(
+    bookCategories[0]
+  );
+
+  const handleChangeSelectedValue = (event) => {
+    setSelectedBookCategory(event.target.value);
+  };
+
   const handleAddToy = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -12,46 +23,45 @@ const AddToys = () => {
     const toyName = form.toyname.value;
     const sellerName = form.sellername.value;
     const sellerEmail = form.selleremail.value;
-    const subcategory = form.subcategory.value;
+    const categoryName = form.categoryName.value;
     const price = form.price.value;
     const rating = form.rating.value;
     const quantity = form.quantity.value;
     const description = form.description.value;
-    const toyDetails={
-        photo,
-        toyName,
-        sellerName,
-        sellerEmail,
-        subcategory,
-        price,
-        rating,
-        quantity,
-        description
-    }
+    const toyDetails = {
+      photo,
+      toyName,
+      sellerName,
+      sellerEmail,
+      categoryName,
+      price,
+      rating,
+      quantity,
+      description,
+    };
+    console.log(toyDetails);
 
-
-    fetch('http://localhost:5000/addtoys',{
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(toyDetails)
-  
+    fetch("http://localhost:5000/addtoys", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(toyDetails),
     })
-    .then(response => response.json())
-    .then(data=>{
-        console.log(data)
-        if(data.insertedId){
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Your Toys has been added successfully',
-                showConfirmButton: false,
-                timer: 1500
-              })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Your Toys has been added successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
-        // form.reset();
-    })
+        form.reset();
+      });
   };
 
   return (
@@ -69,7 +79,7 @@ const AddToys = () => {
                     <span className="label-text">Toy Photo</span>
                   </label>
                   <input
-                    type="text"
+                    type="url"
                     placeholder="PhotoURL"
                     className=" input input-bordered"
                     name="photo"
@@ -86,87 +96,94 @@ const AddToys = () => {
                     name="toyname"
                   />
                 </div>
-              
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Seller Name</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Seller Name"
-                  className="input input-bordered"
-                  name="sellername"
-                />
-              </div>
-              
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Seller Email</span>
-                </label>
-                <input
-                  type="email"
-                  placeholder="Seller Email"
-                  className="input input-bordered"
-                  name="selleremail"
-                  required
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Sub Category</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Sub Category"
-                  className="input input-bordered"
-                  name="subcategory"
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Price</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Price"
-                  className="input input-bordered"
-                  name="price"
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Rating</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Rating"
-                  className="input input-bordered"
-                  name="rating"
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Available Quantity</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Quantity"
-                  className="input input-bordered"
-                  name="quantity"
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Details Description</span>
-                </label>
-                <input
-                  type="text"
-                  name="description"
-                  placeholder="Write product description"
-                  id=""
-                  className="p-2 rounded"
-                />
-              </div>
+
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Seller Name</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Seller Name"
+                    className="input input-bordered"
+                    name="sellername"
+                  />
+                </div>
+
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Seller Email</span>
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="Seller Email"
+                    className="input input-bordered"
+                    name="selleremail"
+                    required
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Sub Category</span>
+                  </label>
+                  <select
+                    id="inputState"
+                    name="categoryName"
+                    className="form-select p-3 rounded-lg "
+                    value={selectedBookCategory}
+                    onChange={handleChangeSelectedValue}
+                  >
+                    {bookCategories.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Price</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Price"
+                    className="input input-bordered"
+                    name="price"
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Rating</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Rating"
+                    className="input input-bordered"
+                    name="rating"
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Available Quantity</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Quantity"
+                    className="input input-bordered"
+                    name="quantity"
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Details Description</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="description"
+                    placeholder="Write product description"
+                    id=""
+                    className="p-2 rounded"
+                  />
+                </div>
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Add Toy</button>
