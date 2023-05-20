@@ -1,16 +1,29 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
+import { FaRegStar, FaStar } from "react-icons/fa";
+import Rating from "react-rating";
 import { Link } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import Swal from "sweetalert2";
+
 
 const Category = () => {
   const [allCategory, setAllCategory] = useState([]);
+  
 
   useEffect(() => {
     fetch("http://localhost:5000/addtoys")
       .then((res) => res.json())
       .then((data) => setAllCategory(data));
   }, []);
+
+  const notify = () => Swal.fire({
+    position: 'center',
+    icon: 'error',
+    title: 'You have to log in first to view details',
+    showConfirmButton: false,
+    timer: 1500
+  });
 
   return (
     <Tabs>
@@ -34,68 +47,122 @@ const Category = () => {
       </TabList>
 
       <TabPanel>
-      <div className="grid grid-cols-1 md:grid-cols-3 mx-auto mt-5 mb-5 gap-4">
-      {
-        allCategory.filter(category => category.categoryName === "Barbie Doll").map(item=> 
-          <div key={item._id} className="card w-96 bg-base-100 shadow-xl border">
-          <figure className="h-96">
-            <img src={item.photo} alt="baby dolls" />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title text-3xl">{item.categoryName}</h2>
-            <p>Toy Price : {item.price}</p>
-            <p>{item.rating}</p>
-            <div className="card-actions justify-end">
-              <Link to={`/seeDetails/${item._id}`} className="btn btn-primary">View details</Link>
-            </div>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 mx-auto mt-5 mb-5 gap-4">
+          {allCategory
+            .filter((category) => category.categoryName === "Barbie Doll")
+            .map((item) => (
+              <div
+                key={item._id}
+                className="card w-96 bg-base-100 shadow-xl border"
+              >
+                <figure className="h-96">
+                  <img src={item?.photo} alt="Barbie dolls" />
+                </figure>
+                <div className="card-body">
+                  <h2 className="card-title text-3xl">{item?.categoryName}</h2>
+                  <p>Toy Price : {item?.price}</p>
+                  <div>
+                    <Rating
+                      className="text-orange-400"
+                      placeholderRating={item?.rating}
+                      readonly
+                      emptySymbol={<FaRegStar></FaRegStar>}
+                      placeholderSymbol={<FaStar></FaStar>}
+                      fullSymbol={<FaStar></FaStar>}
+                    ></Rating>
+                    <span className="m-2">{item?.rating}</span>
+                  </div>
+                  <div className="card-actions justify-end">
+                    <Link onClick={notify}
+                      to={`/seeDetails/${item?._id}`}
+                      className="btn btn-primary"
+                    >
+                      View details
+                    </Link>
+                    
+                  </div>
+                </div>
+              </div>
+            ))}
         </div>
-        )
-      }
-      </div>
-    
       </TabPanel>
       <TabPanel>
-      <div className="grid grid-cols-1 md:grid-cols-3 mx-auto mt-5 mb-5 gap-4">
-      {
-        allCategory.filter(category => category.categoryName === "Baby Doll").map(item=> 
-          <div key={item._id} className="card w-96 bg-base-100 shadow-xl border">
-          <figure>
-            <img src={item.photo} alt="baby dolls" />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title text-3xl">{item.categoryName}</h2>
-            <p>{item.price}</p>
-            <p>{item.rating}</p>
-            <div className="card-actions justify-end">
-              <Link to={`/seeDetails/${item._id}`} className="btn btn-primary" >View details</Link>
-            </div>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 mx-auto mt-5 mb-5 gap-4">
+          {allCategory
+            .filter((category) => category.categoryName === "Baby Doll")
+            .map((item) => (
+              <div
+                key={item?._id}
+                className="card w-96 bg-base-100 shadow-xl border"
+              >
+                <figure className="h-96">
+                  <img src={item?.photo} alt="baby dolls" />
+                </figure>
+                <div className="card-body">
+                  <h2 className="card-title text-3xl">{item?.categoryName}</h2>
+                  <p>Toy Price : {item?.price}</p>
+                  <div>
+                    <Rating
+                      className="text-orange-400"
+                      placeholderRating={item?.rating}
+                      readonly
+                      emptySymbol={<FaRegStar></FaRegStar>}
+                      placeholderSymbol={<FaStar></FaStar>}
+                      fullSymbol={<FaStar></FaStar>}
+                    ></Rating>
+                    <span className="m-2">{item?.rating}</span>
+                  </div>
+                  <div className="card-actions justify-end">
+                    <Link onClick={notify}
+                      to={`/seeDetails/${item?._id}`}
+                      className="btn btn-primary"
+                    >
+                      View details
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
         </div>
-        )
-      }
-      </div>
       </TabPanel>
       <TabPanel>
-      <div className="grid grid-cols-1 md:grid-cols-3 mx-auto mt-5 mb-5 gap-4">
-      {
-        allCategory.filter(category => category.categoryName === "American Doll").map(item=> 
-          <div key={item._id} className="card w-96 bg-base-100 shadow-xl border">
-          <figure>
-            <img src={item.photo} alt="baby dolls" />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title">{item.categoryName}</h2>
-            <p>{item.price}</p>
-            <p>{item.rating}</p>
-            <div className="card-actions justify-end">
-              <Link to={`/seeDetails/${item._id}`} className="btn btn-primary">View details</Link>
-            </div>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 mx-auto mt-5 mb-5 gap-4">
+          {allCategory
+            .filter((category) => category.categoryName === "American Doll")
+            .map((item) => (
+              <div
+                key={item._id}
+                className="card w-96 bg-base-100 shadow-xl border"
+              >
+                <figure className="h-96">
+                  <img src={item?.photo} alt="American dolls" />
+                </figure>
+                <div className="card-body">
+                  <h2 className="card-title">{item?.categoryName}</h2>
+                  <p>Toy Price : {item?.price}</p>
+                  <div>
+                    <Rating
+                      className="text-orange-400"
+                      placeholderRating={item?.rating}
+                      readonly
+                      emptySymbol={<FaRegStar></FaRegStar>}
+                      placeholderSymbol={<FaStar></FaStar>}
+                      fullSymbol={<FaStar></FaStar>}
+                    ></Rating>
+                    <span className="m-2">{item?.rating}</span>
+                  </div>
+                  <div className="card-actions justify-end">
+                    <Link onClick={notify}
+                      to={`/seeDetails/${item?._id}`}
+                      className="btn btn-primary"
+                    >
+                      View details
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
         </div>
-        )
-      }
-      </div>
       </TabPanel>
     </Tabs>
   );
