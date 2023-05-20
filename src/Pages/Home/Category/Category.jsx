@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 
 const Category = () => {
@@ -37,15 +38,15 @@ const Category = () => {
       {
         allCategory.filter(category => category.categoryName === "Barbie Doll").map(item=> 
           <div key={item._id} className="card w-96 bg-base-100 shadow-xl border">
-          <figure>
+          <figure className="h-96">
             <img src={item.photo} alt="baby dolls" />
           </figure>
           <div className="card-body">
-            <h2 className="card-title">{item.categoryName}</h2>
-            <p>{item.price}</p>
+            <h2 className="card-title text-3xl">{item.categoryName}</h2>
+            <p>Toy Price : {item.price}</p>
             <p>{item.rating}</p>
             <div className="card-actions justify-end">
-              <button className="btn btn-primary">View details</button>
+              <Link to={`/seeDetails/${item._id}`} className="btn btn-primary">View details</Link>
             </div>
           </div>
         </div>
@@ -63,11 +64,11 @@ const Category = () => {
             <img src={item.photo} alt="baby dolls" />
           </figure>
           <div className="card-body">
-            <h2 className="card-title">{item.categoryName}</h2>
+            <h2 className="card-title text-3xl">{item.categoryName}</h2>
             <p>{item.price}</p>
             <p>{item.rating}</p>
             <div className="card-actions justify-end">
-              <button className="btn btn-primary">View details</button>
+              <Link to={`/seeDetails/${item._id}`} className="btn btn-primary" >View details</Link>
             </div>
           </div>
         </div>
@@ -88,7 +89,7 @@ const Category = () => {
             <p>{item.price}</p>
             <p>{item.rating}</p>
             <div className="card-actions justify-end">
-              <button className="btn btn-primary">View details</button>
+              <Link to={`/seeDetails/${item._id}`} className="btn btn-primary">View details</Link>
             </div>
           </div>
         </div>
@@ -96,53 +97,6 @@ const Category = () => {
       }
       </div>
       </TabPanel>
-      {/* <TabPanel>
-        <div>baby doll</div>
-        <div className="grid grid-cols-1 md:grid-cols-3 mx-auto mt-5 mb-5 gap-4">
-          {allCategory
-            .filter((s) => s.categoryName === "baby dolls")
-            .map((item) => (
-              <>
-                <div className="card w-96 bg-base-100 shadow-xl border">
-                  <figure>
-                    <img src={item.photo} alt="baby dolls" />
-                  </figure>
-                  <div className="card-body">
-                    <h2 className="card-title">{item.categoryName}</h2>
-                    <p>{item.price}</p>
-                    <p>{item.rating}</p>
-                    <div className="card-actions justify-end">
-                      <button className="btn btn-primary">View details</button>
-                    </div>
-                  </div>
-                </div>
-              </>
-            ))}
-        </div>
-      </TabPanel> */}
-      {/* <TabPanel>
-        <div className="grid grid-cols-1 md:grid-cols-3 mx-auto mt-5 mb-5 gap-4">
-          {allCategory
-            .filter((s) => s.categoryName === "American Doll")
-            .map((item) => (
-            
-                <div key={item._id} className="card w-96 bg-base-100 shadow-xl border">
-                  <figure>
-                    <img src={item.photo} alt="American dolls" />
-                  </figure>
-                  <div className="card-body">
-                    <h2 className="card-title">{item.categoryName}</h2>
-                    <p>{item.price}</p>
-                    <p>{item.rating}</p>
-                    <div className="card-actions justify-end">
-                      <button className="btn btn-primary">View details</button>
-                    </div>
-                  </div>
-                </div>
-           
-            ))}
-        </div>
-      </TabPanel> */}
     </Tabs>
   );
 };

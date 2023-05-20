@@ -11,12 +11,12 @@ const Gallary = () => {
   return (
     <div className="mt-5 mb-5">
       <h2 className="text-4xl text-center text-pink-300">
-        Here is our sample collection!!
+        Here is our sample collection Gallery!!
       </h2>
       <div className="grid grid-cols-1 gap-4 mt-4 md:grid-cols-3">
         <div className="card w-96 glass">
-          <figure>
-            <img style={{height:"256px"}}
+          <figure className="h-96">
+            <img 
             className="img-responsive w-full"
               src={doll1}
               alt="Girl doll!"
@@ -28,8 +28,8 @@ const Gallary = () => {
           </div>
         </div>
         <div className="card w-96 glass">
-          <figure>
-            <img style={{height:"256px"}}
+          <figure className="h-96">
+            <img 
             className="img-responsive  w-full"
               src={doll2}
               alt="car!"
@@ -41,8 +41,8 @@ const Gallary = () => {
           </div>
         </div>
         <div className="card w-96 glass">
-          <figure style={{height:"256px"}}>
-            <img
+          <figure className="h-96">
+            <img 
             className="img-responsive w-full"
               src={doll3}
               alt="car!"
@@ -54,7 +54,7 @@ const Gallary = () => {
           </div>
         </div>
         <div className="card w-96 glass">
-          <figure style={{height:"256px"}}>
+          <figure className="h-96">
             <img 
             className="img-responsive"
               src={doll6}
@@ -67,7 +67,7 @@ const Gallary = () => {
           </div>
         </div>
         <div className="card w-96 glass">
-          <figure style={{height:"256px"}}>
+          <figure className="h-96">
             <img
             className="img-responsive w-full"
               src={doll4}
@@ -81,7 +81,7 @@ const Gallary = () => {
           </div>
         </div>
         <div className="card w-96 glass">
-          <figure style={{height:"256px"}}> 
+          <figure className="h-96"> 
             <img
              className="img-responsive w-full"
               src={doll5}
