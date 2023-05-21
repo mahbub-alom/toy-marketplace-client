@@ -83,7 +83,7 @@ const MyToys = () => {
               <td>
                 <Link
                   onClick={() => handleDelete(item._id)}
-                  className="btn btn-primary"
+                  className="btn btn-secondary"
                 >
                   Delete
                 </Link>
@@ -91,7 +91,7 @@ const MyToys = () => {
               <td>
                 <Link
                   to={`/updatedToys/${item._id}`}
-                  className="btn btn-primary"
+                  className="btn btn-secondary"
                 >
                   Update
                 </Link>

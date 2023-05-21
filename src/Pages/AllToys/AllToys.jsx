@@ -6,9 +6,19 @@ const AllToys = () => {
   useTitle("All Toys");
   const [toys, setToys] = useState([]);
   const [limit, setLimit] = useState(20);
+  const [searchText, setSearchText] = useState("");
+
 
   const showMoreItems = () => {
     setLimit(limit + 1);
+  };
+
+  const handleSearch = () => {
+    fetch(`http://localhost:5000/searchToy/${searchText}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setToys(data);
+      });
   };
 
   useEffect(() => {
@@ -16,8 +26,18 @@ const AllToys = () => {
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);
+
+
   return (
     <div className="overflow-x-auto">
+      <div className=" flex gap-2 mb-3 justify-center search-box p-2 text-center">
+        <input
+          onChange={(e) => setSearchText(e.target.value)}
+          type="text"
+          className="p-1 rounded "
+        />
+        <button onClick={handleSearch} className="btn btn-primary">Search</button>
+      </div>
       <table className="table table-dark table-striped table-compact w-full">
         <thead>
           <tr>
@@ -39,20 +59,24 @@ const AllToys = () => {
               <td>{toy.categoryName}</td>
               <td>{toy.price}</td>
               <td>{toy.quantity}</td>
-              <Link className="btn btn-secondary mb-2" to={`/seeDetails/${toy._id}`}>view details</Link>
+              <Link
+                className="btn btn-secondary mb-2"
+                to={`/seeDetails/${toy._id}`}
+              >
+                view details
+              </Link>
             </tr>
           ))}
         </tbody>
-
       </table>
       <div className="grid mt-4 mb-4 grid-cols-1 gap-2 col-span-6 mx-auto">
-              <button
-                onClick={showMoreItems}
-                className="px-4 py-2 mx-auto rounded-md w-1/3 text-3xl text-white bg-blue-300"
-              >
-                see more
-              </button>
-            </div>
+        <button
+          onClick={showMoreItems}
+          className="px-4 py-2 mx-auto rounded-md w-1/3 text-3xl text-white bg-blue-300"
+        >
+          see more
+        </button>
+      </div>
     </div>
   );
 };
