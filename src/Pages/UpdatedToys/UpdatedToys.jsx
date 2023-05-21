@@ -42,7 +42,7 @@ const UpdatedToys = () => {
           description,
         };
     
-        fetch(`http://localhost:5000/addtoys/${_id}`, {
+        fetch(`https://barbie-doll-house-server.vercel.app/addtoys/${_id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",

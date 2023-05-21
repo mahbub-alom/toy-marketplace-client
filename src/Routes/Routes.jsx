@@ -54,12 +54,12 @@ const router = createBrowserRouter([
       {
         path:'seeDetails/:id',
         element:<PrivateRoute><SeeDetails></SeeDetails></PrivateRoute>,
-        loader:({params})=> fetch (`http://localhost:5000/addtoys/${params.id}`)
+        loader:({params})=> fetch (`https://barbie-doll-house-server.vercel.app/addtoys/${params.id}`)
       },
       {
         path:"updatedToys/:id",
         element:<UpdatedToys></UpdatedToys>,
-        loader:({params})=> fetch (`http://localhost:5000/addtoys/${params.id}`)
+        loader:({params})=> fetch (`https://barbie-doll-house-server.vercel.app/addtoys/${params.id}`)
       }
     ],
   },

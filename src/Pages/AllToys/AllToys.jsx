@@ -12,7 +12,7 @@ const AllToys = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/addtoys")
+    fetch("https://barbie-doll-house-server.vercel.app/addtoys")
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);
