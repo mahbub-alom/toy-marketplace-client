@@ -4,6 +4,7 @@ import Banner from "../Banner/Banner";
 import Gallary from "../Gallary/Gallary";
 import Category from "../Category/Category";
 import About from "../About/About";
+import BranchDetailsPage from "../BranchDetailsPage/BranchDetailsPage";
 
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
       <Gallary></Gallary>
       <Category></Category>
       <About></About>
+      <BranchDetailsPage></BranchDetailsPage>
     </div>
   );
 };
