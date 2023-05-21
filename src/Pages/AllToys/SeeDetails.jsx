@@ -6,7 +6,7 @@ import useTitle from "../../hooks/useTitle";
 
 
 const SeeDetails = () => {
-  useTitle('seeDetails');
+  useTitle('Details');
   const toy = useLoaderData();
 
   return (
