@@ -4,11 +4,12 @@ import { useLoaderData } from "react-router-dom";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import Rating from "react-rating";
 
+
 const SeeDetails = () => {
   const toy = useLoaderData();
 
   return (
-    <div className="flex justify-center">
+    <div className="flex mx-auto justify-center w-1/3">
       <div className="card border mt-4 mb-4 card-compact bg-base-100 shadow-xl">
         <figure>
           <img
@@ -24,7 +25,8 @@ const SeeDetails = () => {
           <h2>Seller Email : {toy?.sellerEmail}</h2>
           <p>Price : ${toy?.price}</p>
           <div>
-            <Rating className="text-orange-400"
+            <Rating
+              className="text-orange-400"
               placeholderRating={toy?.rating}
               readonly
               emptySymbol={<FaRegStar></FaRegStar>}
@@ -34,7 +36,9 @@ const SeeDetails = () => {
             <span className="ms-2">{toy?.rating}</span>
           </div>
           <h2>Available Quantity : {toy.quantity}</h2>
-          <p>Product Description : {toy.description}</p>
+          <div className="w-2/3">
+            <p>Product Description : {toy.description}</p>
+          </div>
         </div>
       </div>
     </div>

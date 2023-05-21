@@ -17,6 +17,7 @@ const AddToys = () => {
   };
 
   const handleAddToy = (event) => {
+
     event.preventDefault();
     const form = event.target;
     const photo = form.photo.value;
@@ -143,7 +144,7 @@ const AddToys = () => {
                     <span className="label-text">Price</span>
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Price"
                     className="input input-bordered"
                     name="price"
@@ -165,7 +166,7 @@ const AddToys = () => {
                     <span className="label-text">Available Quantity</span>
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Quantity"
                     className="input input-bordered"
                     name="quantity"
