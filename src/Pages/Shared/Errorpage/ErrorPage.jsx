@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from "react";
 import { useRouteError, Link } from "react-router-dom";
 import errorphoto from "../../../../public/logo/error.jpg";

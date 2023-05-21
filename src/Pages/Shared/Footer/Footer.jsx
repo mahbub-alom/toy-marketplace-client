@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from "react";
 import logo from '../../../../public/logo/navlogo.svg';
 import { FaFacebookF,FaGoogle,FaLinkedinIn } from "react-icons/fa";

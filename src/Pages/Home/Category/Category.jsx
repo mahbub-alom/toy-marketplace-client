@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import Rating from "react-rating";
@@ -19,7 +18,7 @@ const Category = () => {
 
   const notify = () => Swal.fire({
     position: 'center',
-    icon: 'error',
+    icon: 'warning',
     title: 'You have to log in first to view details',
     showConfirmButton: false,
     timer: 1500

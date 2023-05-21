@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from "react";
 import doll1 from '../../../../public/doll/doll1.jpg'
 import doll2 from '../../../../public/doll/doll2.jpg'

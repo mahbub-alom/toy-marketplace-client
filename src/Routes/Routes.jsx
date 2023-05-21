@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home/Home";
 import Blog from "../Pages/Home/Blog/Blog";
-import ErrorPage from "../Pages/Shared/Errorpage/Errorpage";
 import LoadingSpinner from "../Pages/Shared/LoadingSpinner/LoadingSpinner";
 import Login from "../Pages/Home/Login/Login";
 import Registration from "../Pages/Home/Registration/Registration";
@@ -12,9 +11,8 @@ import MyToys from "../Pages/MyToys/MyToys";
 import PrivateRoute from "./PrivateRoute";
 import SeeDetails from "../Pages/AllToys/SeeDetails";
 import UpdatedToys from "../Pages/UpdatedToys/UpdatedToys";
+import ErrorPage from "../Pages/Shared/Errorpage/ErrorPage";
 
-
-/* eslint-disable no-unused-vars */
 const router = createBrowserRouter([
   {
     path: "/",

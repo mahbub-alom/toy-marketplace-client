@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -7,7 +6,6 @@ const UpdatedToys = () => {
 
     const toys = useLoaderData();
     const {_id,photo,toyName,sellerName,sellerEmail,price,rating,quantity,description}=toys;
-    console.log(price);
 
     const bookCategories = ["Barbie Doll", "American Doll", "Baby Doll"];
 
@@ -38,6 +36,7 @@ const UpdatedToys = () => {
           sellerName,
           sellerEmail,
           categoryName,
+          price,
           rating,
           quantity,
           description,

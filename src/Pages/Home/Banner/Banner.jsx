@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from "react";
 import banner1 from "../../../../public/Banner/banner1.jpg";
 import banner2 from "../../../../public/Banner/banner2.jpg";

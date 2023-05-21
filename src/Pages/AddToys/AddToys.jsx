@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import useTitle from "../../hooks/useTitle";
 import Swal from "sweetalert2";
