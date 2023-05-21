@@ -2,8 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import useTitle from "../../hooks/useTitle";
 
 const MyToys = () => {
+  useTitle("My Toys");
   const { user } = useContext(AuthContext);
   const [items, setItems] = useState([]);
   const [selectedOption,setSelectedOption] = useState('asen');
