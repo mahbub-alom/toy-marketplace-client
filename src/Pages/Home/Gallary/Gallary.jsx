@@ -1,19 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import doll1 from '../../../../public/doll/doll1.jpg'
 import doll2 from '../../../../public/doll/doll2.jpg'
 import doll3 from '../../../../public/doll/doll3.jpg'
 import doll4 from '../../../../public/doll/doll4.jpg'
 import doll5 from '../../../../public/doll/doll5.jpg'
 import doll6 from '../../../../public/doll/doll6.jpg'
+import Aos from 'aos';
+import "aos/dist/aos.css";
 
 const Gallary = () => {
+
+
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
+  }, []);
+
   return (
     <div className="mt-5 mb-5">
       <h2 className="text-4xl text-center text-pink-300">
         Here is our sample collection Gallery!!
       </h2>
       <div className="grid grid-cols-1 gap-4 mt-4 md:grid-cols-3">
-        <div className="card w-96 glass">
+        <div data-aos="zoom-out" className="card w-96 glass">
           <figure className="h-96">
             <img 
             className="img-responsive w-full"
@@ -26,7 +34,7 @@ const Gallary = () => {
             <p>American Girl dolls are popular play dolls known for their high-quality craftsmanship</p>
           </div>
         </div>
-        <div className="card w-96 glass">
+        <div data-aos="zoom-in" className="card w-96 glass">
           <figure className="h-96">
             <img 
             className="img-responsive  w-full"
@@ -39,7 +47,7 @@ const Gallary = () => {
             <p>Couple dolls are designed to represent a romantic partnership or relationship.</p>
           </div>
         </div>
-        <div className="card w-96 glass">
+        <div data-aos="fade-right" className="card w-96 glass">
           <figure className="h-96">
             <img 
             className="img-responsive w-full"
@@ -52,7 +60,7 @@ const Gallary = () => {
             <p>Interactive baby dolls are designed to simulate the experience of caring for a real baby.</p>
           </div>
         </div>
-        <div className="card w-96 glass">
+        <div data-aos="flip-right" className="card w-96 glass">
           <figure className="h-96">
             <img 
             className="img-responsive"
@@ -65,7 +73,7 @@ const Gallary = () => {
             <p> Play dolls are designed for interactive and imaginative play. </p>
           </div>
         </div>
-        <div className="card w-96 glass">
+        <div data-aos="flip-left" className="card w-96 glass">
           <figure className="h-96">
             <img
             className="img-responsive w-full"
@@ -79,7 +87,7 @@ const Gallary = () => {
 
           </div>
         </div>
-        <div className="card w-96 glass">
+        <div data-aos="fade-up" className="card w-96 glass">
           <figure className="h-96"> 
             <img
              className="img-responsive w-full"

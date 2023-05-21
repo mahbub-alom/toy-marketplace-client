@@ -4,11 +4,18 @@ import Rating from "react-rating";
 import { Link } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import Swal from "sweetalert2";
+import Aos from 'aos';
+import "aos/dist/aos.css";
 
 
 const Category = () => {
   const [allCategory, setAllCategory] = useState([]);
   
+
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
+  }, []);
+
 
   useEffect(() => {
     fetch("https://barbie-doll-house-server-mahbub-alom.vercel.app/addtoys")
@@ -52,7 +59,7 @@ const Category = () => {
             .map((item) => (
               <div
                 key={item._id}
-                className="card w-96 bg-base-100 shadow-xl border"
+                className="card  w-96 bg-base-100 shadow-xl border" data-aos="zoom-out"
               >
                 <figure className="h-96">
                   <img src={item?.photo} alt="Barbie dolls" />
@@ -92,7 +99,7 @@ const Category = () => {
             .map((item) => (
               <div
                 key={item?._id}
-                className="card w-96 bg-base-100 shadow-xl border"
+                className="card w-96 bg-base-100 shadow-xl border"data-aos="fade-up"
               >
                 <figure className="h-96">
                   <img src={item?.photo} alt="baby dolls" />
@@ -131,7 +138,7 @@ const Category = () => {
             .map((item) => (
               <div
                 key={item._id}
-                className="card w-96 bg-base-100 shadow-xl border"
+                className="card w-96 bg-base-100 shadow-xl border" data-aos="zoom-in"
               >
                 <figure className="h-96">
                   <img src={item?.photo} alt="American dolls" />
