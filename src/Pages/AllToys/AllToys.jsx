@@ -14,7 +14,7 @@ const AllToys = () => {
   };
 
   const handleSearch = () => {
-    fetch(`http://localhost:5000/searchToy/${searchText}`)
+    fetch(`https://barbie-doll-house-server.vercel.app/searchToy/${searchText}`)
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
@@ -22,7 +22,7 @@ const AllToys = () => {
   };
 
   useEffect(() => {
-    fetch("https://barbie-doll-house-server-mahbub-alom.vercel.app/addtoys")
+    fetch("https://barbie-doll-house-server.vercel.app/addtoys")
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);

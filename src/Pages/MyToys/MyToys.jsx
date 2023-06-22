@@ -12,7 +12,7 @@ const MyToys = () => {
 
   useEffect(() => {
     fetch(
-      `https://barbie-doll-house-server-mahbub-alom.vercel.app/mytoys?email=${user.email}&sort=${selectedOption}`
+      `https://barbie-doll-house-server.vercel.app/mytoys?email=${user.email}&sort=${selectedOption}`
     )
       .then((res) => res.json())
       .then((data) => setItems(data));
@@ -29,7 +29,7 @@ const MyToys = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://barbie-doll-house-server-mahbub-alom.vercel.app/toys/${id}`, {
+        fetch(`https://barbie-doll-house-server.vercel.app/toys/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

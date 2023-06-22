@@ -18,7 +18,7 @@ const Category = () => {
 
 
   useEffect(() => {
-    fetch("https://barbie-doll-house-server-mahbub-alom.vercel.app/addtoys")
+    fetch("https://barbie-doll-house-server.vercel.app/addtoys")
       .then((res) => res.json())
       .then((data) => setAllCategory(data));
   }, []);

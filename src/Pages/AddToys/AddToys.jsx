@@ -40,7 +40,7 @@ const AddToys = () => {
       description,
     };
 
-    fetch("https://barbie-doll-house-server-mahbub-alom.vercel.app/addtoys", {
+    fetch("https://barbie-doll-house-server.vercel.app/addtoys", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
